@@ -52,5 +52,5 @@ jobs:
 
       - name: Copy files to local server
         run: |
-          robocopy . \\localhost\c$\path\to\your\local\server\directory /MIR
+          robocopy . C:\Users\conta\Desktop\ci_cd_tutorial\demo_project /MIR
 
