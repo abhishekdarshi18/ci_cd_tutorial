@@ -28,3 +28,29 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # ... (previous steps remain unchanged)
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Copy files to local server
+        run: |
+          robocopy . \\localhost\c$\path\to\your\local\server\directory /MIR
+
